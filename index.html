@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raise and Learn, Sunshine 🌻</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:"Times New Roman",Times,serif;font-size:18px;color:#000;background:#fff3a8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' fill='%23fff3a8'/%3E%3Ctext x='16' y='42' font-size='26'%3E%F0%9F%8C%BB%3C/text%3E%3C/svg%3E");}
+a{color:#00e;}
+.wrap{max-width:760px;margin:0 auto;padding:10px;background:#fffbe0;border:4px ridge #2e7d32;min-height:100vh}
+header{text-align:center;border-bottom:3px double #2e7d32;padding-bottom:6px}
+h1{font-family:"Comic Sans MS","Comic Sans",cursive;font-size:clamp(1.6rem,6vw,2.6rem);margin:6px 0;color:#c26a00;text-shadow:2px 2px #2e7d32}
+.ticker{overflow:hidden;white-space:nowrap;background:#000;color:#0f0;font-family:"Courier New",monospace;border:2px inset #888;margin:6px 0}
+.ticker span{display:inline-block;padding-left:100%;animation:mq 16s linear infinite}
+@keyframes mq{to{transform:translateX(-100%)}}
+.blink{animation:bl 1s steps(2,start) infinite;color:#d00;font-weight:bold}
+@keyframes bl{to{visibility:hidden}}
+@media (prefers-reduced-motion:reduce){.ticker span,.blink{animation:none;padding-left:0}}
+.stats{display:flex;gap:8px;justify-content:center;font-weight:bold;font-family:"Courier New",monospace}
+.stats span{background:#c0c0c0;border:3px outset #fff;padding:2px 12px}
+.card{background:#fff;border:3px groove #2e7d32;padding:16px;margin-top:14px}
+.hero{text-align:center}
+.uni{font-size:4rem;display:inline-block}
+h2{font-family:"Comic Sans MS","Comic Sans",cursive;color:#2e7d32}
+.worlds{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.world{border:4px outset #e8a200;background:#ffd23f;color:#000;text-align:left;font:inherit;padding:10px;cursor:pointer}
+.world:nth-child(2){background:#9be37d}.world:nth-child(3){background:#8fd3ff}.world:nth-child(4){background:#ffb3a7}.world:nth-child(5){background:#e0b3ff}
+.world:active{border-style:inset}
+.world b{font-size:1.2rem;display:block;text-decoration:underline;color:#00e}
+.stars{letter-spacing:3px;margin-top:4px;color:#c26a00}
+button.btn{font:inherit;font-weight:bold;background:#c0c0c0;color:#000;border:4px outset #fff;padding:4px 20px;cursor:pointer}
+button.btn:active{border-style:inset}
+button.btn.ghost{background:#e6e6e6}
+button:focus-visible,input:focus-visible{outline:3px dotted #d00;outline-offset:2px}
+.bar{height:18px;border:3px inset #888;background:#fff;margin:8px 0 14px}
+.bar i{display:block;height:100%;background:repeating-linear-gradient(90deg,#2e7d32 0 10px,#7bc96f 10px 20px);transition:width .4s}
+.q{font-size:1.3rem;font-weight:bold;margin:6px 0 14px}
+.data{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.chip{background:#fff3a8;color:#000;border:3px solid #2e7d32;padding:4px 12px;font:inherit;font-weight:bold;font-size:1.15rem;min-width:50px}
+button.chip{cursor:pointer;border-style:outset}button.chip:hover{background:#ffd23f}
+.opts{display:grid;gap:8px}
+.opt{font:inherit;text-align:left;border:3px outset #fff;background:#c0c0c0;color:#000;padding:8px 14px;cursor:pointer}
+.opt:hover:not(:disabled){background:#ffe680}
+.opt.ok,.chip.ok{background:#5cd65c;color:#000;border:3px solid #006400}
+.opt.no,.chip.no{background:#ff6b6b;color:#000;border:3px solid #900}
+input[type=number]{font:inherit;font-size:1.3rem;font-weight:bold;border:3px inset #888;padding:4px 10px;width:140px;background:#fff;color:#000}
+.fb{margin-top:14px;padding:10px 14px;border:2px dashed #2e7d32;font-weight:bold}
+.fb.ok{background:#d9ffd0}.fb.no{background:#ffd9d9}
+.chart{display:flex;align-items:flex-end;gap:10px;height:150px;margin:0 0 14px;border-bottom:4px solid #000;border-left:4px solid #000;padding:0 6px}
+.chart div{flex:1;text-align:center;font-weight:bold;color:#000;padding-top:2px;border:2px solid #000;min-width:0}
+.scatter{width:100%;max-width:380px;background:#fff;border:3px inset #888;display:block;margin:0 0 14px}
+.confetti{position:fixed;top:-20px;font-size:1.8rem;pointer-events:none;animation:fall 2.4s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+footer{text-align:center;margin-top:16px;font-size:.9rem;border-top:3px double #2e7d32;padding-top:8px}
+.cnt{font-family:"Courier New",monospace;background:#000;color:#0f0;padding:1px 6px;letter-spacing:2px}
+.tb{border-collapse:collapse;width:100%;font-size:.95rem}.tb td,.tb th{border:2px solid #2e7d32;padding:3px 8px;text-align:left}.tb th{background:#9be37d}
+#nav{margin:8px 0}#nav button{font:inherit;background:#c0c0c0;border:3px outset #fff;padding:2px 10px;cursor:pointer}#nav button:active{border-style:inset}
+.field{display:grid;grid-template-columns:repeat(20,1fr);gap:2px;max-width:380px;border:3px inset #888;padding:3px;background:#fff;margin:8px 0}.field i{aspect-ratio:1;display:block;background:#eef6e6}.field i.l{outline:3px solid #d00;outline-offset:-1px}
+select,textarea,input[type=text]{font:inherit;border:3px inset #888;padding:3px;max-width:100%;background:#fff;color:#000}.small{font-size:.9rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><h1>🌻 Raise and Learn, Sunshine 🌻</h1><div class="ticker"><span>*** Welcome to my homepage! *** Grow sunflowers, discover data science! *** Best viewed in any browser ***</span></div><div class="stats"><span id="st"></span></div>
+  <nav id="nav" class="row"><button data-p="home">Home</button><button data-p="how">How to Play</button><button data-p="fit">Game 1</button><button data-p="samp">Game 2</button><button data-p="test">Playtest</button></nav></header>
+  <main id="app"></main>
+  <footer><p><span class="blink">UNDER CONSTRUCTION</span> 🚧</p><p>You are visitor number <span class="cnt" id="cnt">000000</span></p><p>Made by Sathana S (EC24b1129) &amp; Mohitha S (EC24I1017) with <a href="#">Notepad</a> · Sign my guestbook (see Playtest)! 🐝</p></footer>
+</div>
+<script>
+const $=s=>document.querySelector(s),app=$('#app'),esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let S={ev:{},fb:[],best:{}};try{S=Object.assign(S,JSON.parse(localStorage.getItem('rls')||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem('rls',JSON.stringify(S))}catch(e){}};
+const rng=a=>()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
+const gauss=r=>Math.sqrt(-2*Math.log(r()+1e-12))*Math.cos(2*Math.PI*r()),mean=a=>a.reduce((x,y)=>x+y,0)/a.length;
+const stars=g=>'★'.repeat(S.best[g]||0)+'☆'.repeat(3-(S.best[g]||0));
+const stat=()=>{$('#st').textContent='🌻 Stars: '+((S.best.fit||0)+(S.best.samp||0))+' / 6'};
+// ---- real computation: least-squares polynomial fit (normal equations + Gauss-Jordan) ----
+function fit(xs,ys,d){const n=d+1,A=Array.from({length:n},()=>Array(n+1).fill(0));
+ xs.forEach((x,k)=>{const p=[];for(let i=0;i<n;i++)p[i]=x**i;for(let i=0;i<n;i++){for(let j=0;j<n;j++)A[i][j]+=p[i]*p[j];A[i][n]+=p[i]*ys[k]}});
+ for(let i=0;i<n;i++)A[i][i]+=1e-9;
+ for(let i=0;i<n;i++){let m=i;for(let r=i+1;r<n;r++)if(Math.abs(A[r][i])>Math.abs(A[m][i]))m=r;[A[i],A[m]]=[A[m],A[i]];
+  for(let r=0;r<n;r++)if(r!==i){const f=A[r][i]/A[i][i];for(let c=i;c<=n;c++)A[r][c]-=f*A[i][c]}}
+ return A.map((row,i)=>row[n]/row[i])}
+const ev=(c,x)=>c.reduce((s,a,i)=>s+a*x**i,0),rmse=(c,xs,ys)=>Math.sqrt(xs.reduce((s,x,i)=>s+(ev(c,x)-ys[i])**2,0)/xs.length);
+// ---- pre/post prediction (evidence of learning) ----
+const Q={fit:['A more complex model ALWAYS predicts brand-new data better.',false],samp:['A big sample from the easy-to-reach roadside is more trustworthy than a smaller random sample.',false]};
+const askHTML=(g,k)=>`<div class="fb"><b>${k==='pre'?'Before you play, what do you think?':'Now that you have played, what do you think?'}</b><br>${Q[g][0]}<div class="row">${['True','False','Not sure'].map(o=>`<button class="btn ghost pp" data-o="${o}">${o}</button>`).join('')}</div></div>`;
+const bindPP=(g,k,after)=>app.querySelectorAll('.pp').forEach(b=>b.onclick=()=>{(S.ev[g]=S.ev[g]||{})[k]=b.dataset.o;save();after()});
+// ================= HOME & HOW TO PLAY =================
+function home(){app.innerHTML=`<section class="card hero"><div class="uni">🌻</div><h2>Welcome, gardener!</h2><p>You are raising sunflowers and learning data science at the same time. There are no lectures: <b>experiment, watch what happens, and discover the rule yourself.</b></p></section>
+<section class="card"><div class="worlds"><button class="world" data-g="fit"><span style="font-size:2rem">🌻</span><b>Game 1: Predict the Bloom</b><small>Overfitting and the bias-variance trade-off</small><div class="stars">${stars('fit')}</div></button><button class="world" data-g="samp"><span style="font-size:2rem">🚜</span><b>Game 2: Sample the Field</b><small>Sampling and sampling bias</small><div class="stars">${stars('samp')}</div></button></div></section>`;
+ app.querySelectorAll('.world').forEach(b=>b.onclick=()=>go(b.dataset.g))}
+function how(){app.innerHTML=`<section class="card"><h2 style="margin-top:0">📖 How to Play</h2>
+<h3>Game 1: Predict the Bloom (overfitting, bias-variance)</h3><p><b>Learning objectives.</b> After playing you can: (1) explain that training error keeps falling as a model gets more complex; (2) explain that error on new data falls then rises again; (3) name underfitting (high bias) and overfitting (high variance); (4) say why we test on unseen data.</p>
+<ol><li>Answer the quick prediction question.</li><li>Move the <b>complexity</b> slider. The red curve is a polynomial model fitted by least squares to 12 measured sunflowers.</li><li>Press <b>Test on new sunflowers</b> to measure the model on 300 hidden plants. You only have 5 tests (re-testing a complexity you already tried is free).</li><li>Press <b>Lock in</b> when ready. You earn 3 stars if you are within 3% of the best possible error.</li></ol>
+<h3>Game 2: Sample the Field (sampling, bias)</h3><p><b>Learning objectives.</b> After playing you can: (1) explain that a sample should represent the whole population; (2) explain that a biased method stays wrong however large the sample; (3) explain that random samples get less noisy as they get larger; (4) estimate a population mean from a sample.</p>
+<ol><li>Answer the quick prediction question.</li><li>A field has 400 sunflowers with hidden heights. Choose <b>where</b> to sample and <b>how many</b> plants. Each measurement uses your 150-plant budget.</li><li>Compare your estimates, then press <b>Use as final</b> on the one you trust.</li><li>The true average is revealed, and the game repeats your method 300 times to show its bias and spread. Under 3 cm error earns 3 stars.</li></ol>
+<h3>Playtest</h3><p>Ask classmates to play, then use the <b>Playtest</b> page to record feedback and export it as CSV. Pre/post answers are saved automatically on each device.</p></section>`}
+// ================= GAME 1: OVERFITTING =================
+let F;const X=x=>300+x*280,Y=y=>150-Math.max(-1.2,Math.min(1.2,y))*125;
+function fitNew(){const r=rng(Date.now()%1e9),f=x=>.5*Math.sin(3*x)+.3*x,mk=n=>{const a=[],b=[];for(let i=0;i<n;i++){const x=r()*2-1;a.push(x);b.push(f(x)+.22*gauss(r))}return[a,b]};
+ const[xs,ys]=mk(12),[tx,ty]=mk(300),D=[...Array(9).keys()].map(i=>i+1),te=D.map(d=>rmse(fit(xs,ys,d),tx,ty)),tr=D.map(d=>rmse(fit(xs,ys,d),xs,ys));
+ F={xs,ys,tx,ty,te,tr,bd:te.indexOf(Math.min(...te))+1,d:3,tests:[],left:5,shown:false}}
+function fitIntro(){S.ev.fit=S.ev.fit||{};app.innerHTML=`<section class="card"><h2 style="margin-top:0">🌻 Game 1: Predict the Bloom</h2><p><b>Goal:</b> 12 sunflowers have been measured (yellow dots). Build a growth model (the red curve) that predicts how tall <i>brand-new</i> sunflowers will be. Turn the complexity dial, use your 5 field tests wisely, then lock in your best model.</p>${S.ev.fit.pre?'<div class="row"><button class="btn" id="go">Start planting</button></div>':askHTML('fit','pre')}</section>`;
+ if(S.ev.fit.pre)$('#go').onclick=()=>{fitNew();delete S.ev.fit.post;fitShell()};else bindPP('fit','pre',fitIntro)}
+function fitShell(){app.innerHTML=`<section class="card"><b>Tests left: <span id="left"></span> 🌱</b><div id="chart"></div><label>Model complexity: <b id="dl"></b> <input type="range" id="dg" min="1" max="9" value="${F.d}" style="width:60%"></label><p>Training error (yellow dots): <b id="tr"></b></p><div class="row"><button class="btn" id="tst">🌱 Test on new sunflowers</button><button class="btn" id="lock">🔒 Lock in this model</button></div><div id="log"></div></section>`;
+ $('#dg').oninput=e=>{F.d=+e.target.value;drawFit()};$('#tst').onclick=testFit;$('#lock').onclick=lockFit;drawFit()}
+function drawFit(){const c=fit(F.xs,F.ys,F.d);let p='';for(let i=0;i<=120;i++){const x=-1+i/60;p+=(i?'L':'M')+X(x).toFixed(1)+' '+Y(ev(c,x)).toFixed(1)}
+ let s='<svg class="scatter" style="max-width:100%" viewBox="0 0 600 300" role="img" aria-label="Fitted curve with sunflower data"><rect width="600" height="300" fill="#fff"/>';
+ if(F.shown)for(let i=0;i<40;i++)s+=`<circle cx="${X(F.tx[i])}" cy="${Y(F.ty[i])}" r="5" fill="none" stroke="#2e7d32" stroke-width="2.5"/>`;
+ F.xs.forEach((x,i)=>s+=`<circle cx="${X(x)}" cy="${Y(F.ys[i])}" r="8" fill="#ffd23f" stroke="#000" stroke-width="2"/>`);
+ $('#chart').innerHTML=s+`<path d="${p}" fill="none" stroke="#c0392b" stroke-width="3"/></svg>`;
+ $('#dl').textContent=F.d;$('#tr').textContent=rmse(c,F.xs,F.ys).toFixed(3);$('#left').textContent=F.left;$('#tst').disabled=!F.left&&!F.tests.find(t=>t.d===F.d);
+ $('#log').innerHTML=F.tests.length?`<p>Green rings are new sunflowers the model has never seen.</p><table class="tb"><tr><th>Complexity</th><th>Training error</th><th>New-sunflower error</th></tr>${[...F.tests].sort((a,b)=>a.d-b.d).map(t=>`<tr><td>${t.d}</td><td>${t.tr.toFixed(3)}</td><td>${t.te.toFixed(3)}</td></tr>`).join('')}</table>`:'<p>No tests yet. Pick a complexity and test it!</p>'}
+function testFit(){const c=fit(F.xs,F.ys,F.d);if(!F.tests.find(t=>t.d===F.d)){if(!F.left)return;F.left--;F.tests.push({d:F.d,tr:rmse(c,F.xs,F.ys),te:rmse(c,F.tx,F.ty)})}F.shown=true;drawFit()}
+function lockFit(){if(!F.tests.length){alert('Run at least one test first!');return}
+ const d=F.d,ratio=F.te[d-1]/F.te[F.bd-1],st=ratio<=1.03?3:ratio<=1.12?2:1;S.best.fit=Math.max(S.best.fit||0,st);save();stat();
+ const msg=d<F.bd?'Your model was too simple: <b>underfitting</b> (high bias). It missed the real pattern.':d>F.bd?'Your model was too complex: <b>overfitting</b> (high variance). It chased random noise in just 12 plants.':'Just right! Complex enough to catch the pattern, simple enough to ignore the noise.';
+ const Xd=k=>40+(k-1)*65,ym=Math.min(Math.max(...F.te),.9),Ye=e=>270-Math.min(e,ym)/ym*250,line=a=>a.map((e,i)=>(i?'L':'M')+Xd(i+1)+' '+Ye(e).toFixed(1)).join('');
+ const svg=`<svg class="scatter" style="max-width:100%" viewBox="0 0 600 300" role="img" aria-label="Training and new-sunflower error by complexity"><rect width="600" height="300" fill="#fff"/><path d="M30 10V272H580" stroke="#000" fill="none" stroke-width="2"/><path d="${line(F.tr)}" stroke="#e8a200" stroke-width="4" fill="none"/><path d="${line(F.te)}" stroke="#2e7d32" stroke-width="4" fill="none"/><circle cx="${Xd(F.bd)}" cy="${Ye(F.te[F.bd-1])}" r="9" fill="#2e7d32"/><circle cx="${Xd(d)}" cy="${Ye(F.te[d-1])}" r="7" fill="none" stroke="#d00" stroke-width="3"/>${[...Array(9).keys()].map(i=>`<text x="${Xd(i+1)}" y="292" font-size="14" text-anchor="middle">${i+1}</text>`).join('')}<text x="45" y="26" font-size="14" fill="#b8860b">training error</text><text x="45" y="44" font-size="14" fill="#2e7d32">new-sunflower error</text></svg>`;
+ app.innerHTML=`<section class="card hero"><div class="uni">${st>1?'🌻':'🥀'}</div><h2>${'★'.repeat(st)}${'☆'.repeat(3-st)}</h2><p>You locked in complexity <b>${d}</b>. The best was <b>${F.bd}</b> (error ${F.te[F.bd-1].toFixed(3)} vs your ${F.te[d-1].toFixed(3)}).</p><p>${msg}</p>${svg}<p style="text-align:left"><b>What the whole garden shows:</b> training error fell from ${F.tr[0].toFixed(3)} to ${F.tr[8].toFixed(3)} as the model got more complex, but error on new sunflowers bottomed out at complexity ${F.bd} and then rose again. A great fit to the data you already have does not mean a great prediction. That is why we test on unseen data.</p>${S.ev.fit.post?'':askHTML('fit','post')}<div class="row"><button class="btn" id="ag">New garden</button><button class="btn ghost" id="hm">Home</button></div></section>`;
+ $('#ag').onclick=()=>{fitNew();delete S.ev.fit.post;fitShell()};$('#hm').onclick=()=>go('home');bindPP('fit','post',lockFit)}
+// ================= GAME 2: SAMPLING =================
+let P;const LBL={road:'Roadside',rand:'Random',back:'Shady back'};
+function pick(m,n,r){const pool=m==='road'?[...Array(100).keys()]:m==='back'?[...Array(100).keys()].map(i=>i+300):[...Array(400).keys()];for(let i=0;i<n;i++){const j=i+Math.floor(r()*(pool.length-i));[pool[i],pool[j]]=[pool[j],pool[i]]}return pool.slice(0,n)}
+function sampNew(){const r=rng((Date.now()+7)%1e9),h=[];for(let i=0;i<400;i++){const row=Math.floor(i/20);h.push(Math.round((row<5?190:row<15?160:135)+16*gauss(r)))}P={h,r,left:150,hist:[],n:20,m:'rand',mean:mean(h)}}
+function sampIntro(){S.ev.samp=S.ev.samp||{};app.innerHTML=`<section class="card"><h2 style="margin-top:0">🚜 Game 2: Sample the Field</h2><p><b>Goal:</b> a field has 400 sunflowers. You cannot measure them all (budget: 150 measurements). Estimate the <b>average height</b> as accurately as you can. Choose where to sample and how many plants, then pick the estimate you trust.</p>${S.ev.samp.pre?'<div class="row"><button class="btn" id="go">Walk into the field</button></div>':askHTML('samp','pre')}</section>`;
+ if(S.ev.samp.pre)$('#go').onclick=()=>{sampNew();delete S.ev.samp.post;sampShell()};else bindPP('samp','pre',sampIntro)}
+function sampShell(){app.innerHTML=`<section class="card"><b>Budget left: <span id="bud"></span> plants 🪴</b><div class="field" id="field"></div><div class="small">🛣️ Roadside = top rows · 🌳 Shady back = bottom rows. Measured plants turn green (darker = taller).</div><p>Where to sample: <select id="mt"><option value="rand">Random draw</option><option value="road">Roadside (easy to reach)</option><option value="back">Shady back rows</option></select></p><label>How many plants: <b id="nl"></b> <input type="range" id="nn" min="5" max="100" step="5" value="${P.n}" style="width:55%"></label><div class="row"><button class="btn" id="ms">📏 Measure sample</button></div><div id="hl"></div></section>`;
+ $('#mt').value=P.m;$('#mt').onchange=e=>P.m=e.target.value;$('#nn').oninput=e=>{P.n=+e.target.value;$('#nl').textContent=P.n};$('#ms').onclick=()=>{if(P.n>P.left){alert('Not enough budget left for that many plants. Choose fewer.');return}
+  const idx=pick(P.m,P.n,P.r);P.left-=P.n;P.hist.push({m:P.m,n:P.n,idx,est:mean(idx.map(i=>P.h[i]))});drawField()};drawField()}
+function drawField(){const seen=new Set(P.hist.flatMap(s=>s.idx)),last=new Set((P.hist[P.hist.length-1]||{idx:[]}).idx);
+ $('#field').innerHTML=P.h.map((v,i)=>`<i class="${last.has(i)?'l':''}" style="${seen.has(i)?`background:hsl(${50+(v-110)/110*70},70%,${75-(v-110)/110*40}%)`:''}"></i>`).join('');
+ $('#bud').textContent=P.left;$('#nl').textContent=P.n;
+ $('#hl').innerHTML=P.hist.length?`<h3>Your samples</h3>${P.hist.map((s,i)=>`<p>#${i+1} ${LBL[s.m]}, n=${s.n} → average <b>${s.est.toFixed(1)} cm</b> <button class="btn ghost use" data-i="${i}">Use as final</button></p>`).join('')}`:'<p>No samples yet. Measure some plants!</p>';
+ app.querySelectorAll('.use').forEach(b=>b.onclick=()=>sampEnd(+b.dataset.i))}
+function sampEnd(i){const s=P.hist[i],err=Math.abs(s.est-P.mean),st=err<=3?3:err<=6?2:1;S.best.samp=Math.max(S.best.samp||0,st);save();stat();
+ const r=rng(12345),sim=[...Array(300)].map(()=>mean(pick(s.m,s.n,r).map(k=>P.h[k]))),am=mean(sim),sd=Math.sqrt(mean(sim.map(v=>(v-am)**2)));
+ const msg=s.m!=='rand'?`<b>Biased method!</b> Repeating it 300 times averages ${am.toFixed(1)} cm, which is ${Math.abs(am-P.mean).toFixed(1)} cm away from the truth. More plants will not fix that, because the roadside and shady back are not typical of the whole field.`:sd>4?`Random sampling is unbiased (repeats average ${am.toFixed(1)} cm), but with only ${s.n} plants each try is noisy (spread ±${sd.toFixed(1)} cm). Measure more plants to tighten it.`:`Random sampling is unbiased and ${s.n} plants keeps the spread small (±${sd.toFixed(1)} cm). Nicely done.`;
+ app.innerHTML=`<section class="card hero"><div class="uni">${st>1?'🌻':'🥀'}</div><h2>${'★'.repeat(st)}${'☆'.repeat(3-st)}</h2><p>Your estimate: <b>${s.est.toFixed(1)} cm</b> · True average of all 400: <b>${P.mean.toFixed(1)} cm</b> · Error: <b>${err.toFixed(1)} cm</b></p><p style="text-align:left">${msg}</p>${S.ev.samp.post?'':askHTML('samp','post')}<div class="row"><button class="btn" id="ag">New field</button><button class="btn ghost" id="hm">Home</button></div></section>`;
+ $('#ag').onclick=()=>{sampNew();delete S.ev.samp.post;sampShell()};$('#hm').onclick=()=>go('home');bindPP('samp','post',()=>sampEnd(i))}
+// ================= PLAYTEST EVIDENCE =================
+function playtest(){const n=S.fb.length,avg=n?mean(S.fb.map(f=>+f.rating)):0,yes=S.fb.filter(f=>f.learned==='Yes').length;
+ const evRows=['fit','samp'].map(g=>{const e=S.ev[g]||{},ok=Q[g][1]?'True':'False';return `<tr><td>${g==='fit'?'Predict the Bloom':'Sample the Field'}</td><td>${e.pre||'-'}</td><td>${e.post||'-'}</td><td>${ok}</td></tr>`}).join('');
+ app.innerHTML=`<section class="card"><h2 style="margin-top:0">📝 Playtest</h2><p>Ask classmates to play, then fill this in together. Entries are stored in this browser. Use <b>Export CSV</b> to collect them across devices.</p>
+ <p><b>${n}</b> responses · average rating <b>${n?avg.toFixed(1):'-'}</b>/5 · <b>${n?Math.round(yes/n*100):0}%</b> said they discovered the concept</p>
+ <h3>Pre/post prediction (this device)</h3><table class="tb"><tr><th>Game</th><th>Before</th><th>After</th><th>Correct</th></tr>${evRows}</table>
+ <h3>Add feedback</h3><p>Name (optional): <input type="text" id="fn"></p><p>Game: <select id="fg"><option>Predict the Bloom</option><option>Sample the Field</option></select> Rating: <select id="fr"><option>5</option><option>4</option><option>3</option><option>2</option><option>1</option></select></p><p>Did you discover the idea by playing? <select id="fl"><option>Yes</option><option>Somewhat</option><option>No</option></select></p><p>What did you learn, in your own words?<br><textarea id="ft" rows="3" style="width:100%"></textarea></p><p>What was confusing or could be better?<br><textarea id="fc" rows="2" style="width:100%"></textarea></p><div class="row"><button class="btn" id="fs">Save feedback</button><button class="btn ghost" id="fe">Export CSV</button><button class="btn ghost" id="fx">Clear all</button></div>
+ ${n?`<h3>Responses</h3><table class="tb"><tr><th>Who</th><th>Game</th><th>⭐</th><th>Discovered?</th><th>Before</th><th>After</th><th>Learned</th><th>Suggestion</th></tr>${S.fb.map(f=>`<tr><td>${esc(f.name||'anon')}</td><td>${esc(f.game)}</td><td>${esc(f.rating)}</td><td>${esc(f.learned)}</td><td>${esc(f.pre||'-')}</td><td>${esc(f.post||'-')}</td><td>${esc(f.text)}</td><td>${esc(f.comment)}</td></tr>`).join('')}</table>`:''}</section>`;
+ $('#fs').onclick=()=>{const e=S.ev[$('#fg').value==='Predict the Bloom'?'fit':'samp']||{};S.fb.push({name:$('#fn').value,game:$('#fg').value,rating:$('#fr').value,learned:$('#fl').value,text:$('#ft').value,comment:$('#fc').value,pre:e.pre||'',post:e.post||'',when:new Date().toISOString()});save();playtest()};
+ $('#fx').onclick=()=>{if(confirm('Delete all feedback?')){S.fb=[];save();playtest()}};
+ $('#fe').onclick=()=>{const q=v=>'"'+String(v).replace(/"/g,'""')+'"',k=['when','name','game','rating','learned','pre','post','text','comment'],csv=[k.join(',')].concat(S.fb.map(f=>k.map(c=>q(f[c]||'')).join(','))).join('\n'),a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='playtest-feedback.csv';a.click()}}
+// ================= NAV =================
+const PAGES={home,how,fit:fitIntro,samp:sampIntro,test:playtest};
+function go(p){PAGES[p]();scrollTo(0,0);stat()}
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.p));
+$('#cnt').textContent=String(1000+Math.floor(Math.random()*9000)).padStart(6,'0');
+go('home');
+</script>
+</body>
+</html>
