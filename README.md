@@ -2,8 +2,7 @@
 
 **Authors:** Sathana S (EC24b1129) and Mohitha S (EC24I1017)
 **Course:** Introduction to Data Science, Part B (game for learning data science concepts)
-**Play it here:** https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/   *(replace after turning on GitHub Pages)*
-
+**Play it here:** (https://sathanasampath14-create.github.io/raise-and-learn-sunshine/)
 A retro "90s homepage" garden game with two mini-games. You learn by experimenting, not by reading: you change a setting, see what happens, and discover the rule yourself. The game is a single file (`index.html`) with no installation and no external libraries.
 
 ## The two games
