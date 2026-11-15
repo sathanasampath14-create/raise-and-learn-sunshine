@@ -32,21 +32,5 @@ A retro "90s homepage" garden game with two mini-games. You learn by experimenti
 ## Evidence of learning (playtest)
 The **Playtest** page records, for each tester: a before/after prediction on a true/false statement ("A more complex model ALWAYS predicts brand-new data better" and the sampling statement), a rating, whether they discovered the idea, what they learned in their own words, and what confused them. **Export CSV** downloads everything, including the before and after answers.
 
-### Playtest results
-*(Fill this in with your real results. Ask 4 to 5 classmates to play, each on their own device or one after another on one laptop, then export the CSV.)*
-
-| Tester | Before answer | After answer | Rating (1-5) | Discovered the idea? | What they learned (own words) | What confused them |
-|---|---|---|---|---|---|---|
-| | | | | | | |
-
-**Changes we made after feedback:**
-1. *(example: made the instructions clearer on the first screen)*
-2.
-
 ## Run locally
 Download `index.html` and double-click it. No server or installation is needed.
-
-## Limitations
-- The "new sunflowers" used for testing also decide the best complexity, so they act like a validation set; a full pipeline would keep a separate final test set.
-- With only 12 noisy plants, the best complexity is sometimes very simple (degree 1 or 2), which is realistic but can surprise players.
-- Progress and playtest entries are stored in the browser's local storage, so they stay on that device unless you export the CSV.
